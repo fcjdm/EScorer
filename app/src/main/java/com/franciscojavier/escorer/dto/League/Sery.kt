@@ -1,4 +1,4 @@
-package com.franciscojavier.escorer.dto
+package com.franciscojavier.escorer.dto.League
 
 
 import com.google.gson.annotations.SerializedName
@@ -9,8 +9,6 @@ import android.os.Parcelable
 data class Sery(
     @SerializedName("begin_at")
     val beginAt: String,
-    @SerializedName("end_at")
-    val endAt: String,
     @SerializedName("full_name")
     val fullName: String,
     @SerializedName("id")
@@ -21,14 +19,8 @@ data class Sery(
     val modifiedAt: String,
     @SerializedName("name")
     val name: String,
-    @SerializedName("season")
-    val season: String,
     @SerializedName("slug")
     val slug: String,
-    @SerializedName("winner_id")
-    val winnerId: Int,
-    @SerializedName("winner_type")
-    val winnerType: String,
     @SerializedName("year")
     val year: Int
 ) : Parcelable

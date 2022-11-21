@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="com.franciscojavier.escorer.ui.main.MainFragment"
-    tools:context="com.franciscojavier.escorer.HostActivity"
-    />
+    android:name="androidx.navigation.fragment.NavHostFragment"
+    app:navGraph="@navigation/nav_graph"
+    app:defaultNavHost="true"
+    tools:context=".HostActivity" />

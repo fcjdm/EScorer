@@ -6,8 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.franciscojavier.escorer.R
 import com.franciscojavier.escorer.databinding.ViewGameBinding
-import com.franciscojavier.escorer.dto.GamesResult
-import com.franciscojavier.escorer.dto.GamesResultItem
+import com.franciscojavier.escorer.dto.game.GamesResultItem
 
 
 class GameAdapter (
@@ -19,7 +18,6 @@ class GameAdapter (
         val binding = ViewGameBinding.bind(view)
         fun bind(game: GamesResultItem){
             binding.gameName.text = game.name
-            binding.gameSlug.text = game.slug
         }
     }
 
