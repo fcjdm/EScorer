@@ -1,4 +1,4 @@
-package com.franciscojavier.escorer.dto.League
+package com.franciscojavier.escorer.dto.league
 
 
 import com.google.gson.annotations.SerializedName
@@ -6,21 +6,17 @@ import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
 @Parcelize
-data class Sery(
-    @SerializedName("begin_at")
-    val beginAt: String,
-    @SerializedName("full_name")
-    val fullName: String,
+data class LeaguesResultItem(
     @SerializedName("id")
     val id: Int,
-    @SerializedName("league_id")
-    val leagueId: Int,
+    @SerializedName("image_url")
+    val imageUrl: String,
     @SerializedName("modified_at")
     val modifiedAt: String,
     @SerializedName("name")
     val name: String,
     @SerializedName("slug")
     val slug: String,
-    @SerializedName("year")
-    val year: Int
+    @SerializedName("videogame")
+    val videogame: Videogame
 ) : Parcelable

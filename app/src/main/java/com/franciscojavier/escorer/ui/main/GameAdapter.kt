@@ -7,12 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.franciscojavier.escorer.R
 import com.franciscojavier.escorer.databinding.ViewGameBinding
 import com.franciscojavier.escorer.dto.game.GamesResultItem
+import com.franciscojavier.escorer.inflate
 
 
 class GameAdapter (
     var gameList : List<GamesResultItem>,
     val listener: (GamesResultItem) -> Unit
-): RecyclerView.Adapter<GameAdapter.ViewHolder>(){
+    ): RecyclerView.Adapter<GameAdapter.ViewHolder>(){
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val binding = ViewGameBinding.bind(view)
@@ -22,7 +23,7 @@ class GameAdapter (
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_game, parent, false)
+        val view = parent.inflate(R.layout.view_game, false)
         return ViewHolder(view)
     }
 

@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.league.LeagueFragment">
+    tools:context=".ui.match.MatchFragment"
+    app:defaultNavHost="true"
+    app:navGraph="@navigation/nav_graph">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerLeague"
+        android:id="@+id/recyclerMatch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
-        tools:listitem="@layout/view_league" />
+        app:spanCount="1"
+        tools:listitem="@layout/view_match" />
 </FrameLayout>

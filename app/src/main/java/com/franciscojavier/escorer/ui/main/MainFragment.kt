@@ -17,13 +17,13 @@ import kotlinx.coroutines.launch
 
 
 class MainFragment : Fragment(R.layout.fragment_main) {
-    private val adapter = GameAdapter(emptyList()){ movie -> navigateTo(movie)}
+    private val adapter = GameAdapter(emptyList()){ game -> navigateTo(game)}
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = FragmentMainBinding.bind(view).apply {
-            recycler.adapter = adapter
+            recyclerGame.adapter = adapter
 
             lifecycleScope.launch {
                 val token = getString(R.string.token)
