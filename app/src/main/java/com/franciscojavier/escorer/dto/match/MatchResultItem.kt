@@ -4,7 +4,7 @@ package com.franciscojavier.escorer.dto.match
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
-import com.franciscojavier.escorer.dto.league.LeaguesResultItem
+import com.franciscojavier.escorer.dto.game.GamesResultItem
 
 @Parcelize
 data class MatchResultItem(
@@ -18,18 +18,14 @@ data class MatchResultItem(
     val endAt: String,
     @SerializedName("forfeit")
     val forfeit: Boolean,
-    @SerializedName("game_advantage")
-    val gameAdvantage: String,
     @SerializedName("games")
     val games: List<Game>,
     @SerializedName("id")
     val id: Int,
     @SerializedName("league")
-    val league: LeaguesResultItem,
+    val league: League,
     @SerializedName("league_id")
     val leagueId: Int,
-    @SerializedName("live")
-    val live: Live,
     @SerializedName("match_type")
     val matchType: String,
     @SerializedName("modified_at")
@@ -48,14 +44,18 @@ data class MatchResultItem(
     val results: List<Result>,
     @SerializedName("scheduled_at")
     val scheduledAt: String,
-    @SerializedName("serie_id")
-    val serieId: Int,
     @SerializedName("slug")
     val slug: String,
     @SerializedName("status")
     val status: String,
+    @SerializedName("streams_list")
+    val streamsList: List<Streams>,
     @SerializedName("tournament_id")
     val tournamentId: Int,
+    @SerializedName("videogame")
+    val videogame: GamesResultItem,
+    @SerializedName("winner")
+    val winner: WinnerX,
     @SerializedName("winner_id")
     val winnerId: Int,
     @SerializedName("winner_type")

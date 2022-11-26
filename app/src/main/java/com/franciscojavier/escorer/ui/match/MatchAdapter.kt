@@ -21,11 +21,15 @@ class MatchAdapter (
                 binding.opponent1Name.text = match.opponents[0].opponent.name
                 if(match.opponents[0].opponent.imageUrl != null){
                     binding.opponent1Image.loadUrl(match.opponents[0].opponent.imageUrl)
+                }else{
+                    binding.opponent1Image.setImageResource(R.drawable.no_image)
                 }
 
                 binding.opponent2Name.text = match.opponents[1].opponent.name
                 if(match.opponents[1].opponent.imageUrl != null){
                     binding.opponent2Image.loadUrl(match.opponents[1].opponent.imageUrl)
+                }else{
+                    binding.opponent2Image.setImageResource(R.drawable.no_image)
                 }
 
             }

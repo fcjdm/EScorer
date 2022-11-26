@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detailmatch.DetailMatchFragment">
+
+    <ImageView
+        android:id="@+id/detailOpponentImage1"
+        android:layout_width="108dp"
+        android:layout_height="112dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/no_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/detailOpponentImage2"
+        android:layout_width="108dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="24dp"
+        android:src="@drawable/no_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/detailOpponentName1"
+        android:layout_width="141dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        android:textAlignment="textStart"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailOpponentImage1" />
+
+    <TextView
+        android:id="@+id/detailOpponentName2"
+        android:layout_width="141dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="18dp"
+        android:text="TextView"
+        android:textAlignment="textEnd"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailOpponentImage2" />
+
+    <TextView
+        android:id="@+id/detailMatchDate"
+        android:layout_width="108dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="24dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/detailOpponentImage2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/detailOpponentImage1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/detailStatus"
+        android:layout_width="94dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/detailOpponentImage2"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toEndOf="@+id/detailOpponentImage1"
+        app:layout_constraintTop_toBottomOf="@+id/detailMatchDate" />
+
+    <TextView
+        android:id="@+id/detailLeagueName"
+        android:layout_width="340dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="112dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailStatus" />
+
+    <TextView
+        android:id="@+id/detailGameName"
+        android:layout_width="248dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailLeagueName" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,5 +25,14 @@
     <fragment
         android:id="@+id/matchFragment"
         android:name="com.franciscojavier.escorer.ui.match.MatchFragment"
-        android:label="MatchFragment" />
+        android:label="MatchFragment" >
+        <action
+            android:id="@+id/action_matchFragment_to_detailMatchFragment"
+            app:destination="@id/detailMatchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailMatchFragment"
+        android:name="com.franciscojavier.escorer.ui.detailmatch.DetailMatchFragment"
+        android:label="fragment_detail_match"
+        tools:layout="@layout/fragment_detail_match" />
 </navigation>

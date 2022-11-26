@@ -29,6 +29,8 @@ data class Game(
     val position: Int,
     @SerializedName("status")
     val status: String,
+    @SerializedName("winner")
+    val winner: Winner,
     @SerializedName("winner_type")
     val winnerType: String
 ) : Parcelable

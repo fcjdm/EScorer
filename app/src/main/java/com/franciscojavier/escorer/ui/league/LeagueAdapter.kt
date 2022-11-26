@@ -21,6 +21,8 @@ class LeagueAdapter (
             binding.leagueName.text = league.name
             if(league.imageUrl!=null) {
                 binding.leagueImage.loadUrl(league.imageUrl)
+            }else{
+                binding.leagueImage.setImageResource(R.drawable.no_image)
             }
 
         }
