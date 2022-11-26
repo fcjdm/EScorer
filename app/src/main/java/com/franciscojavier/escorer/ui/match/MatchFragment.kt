@@ -11,21 +11,16 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.franciscojavier.escorer.R
 import com.franciscojavier.escorer.databinding.FragmentMatchBinding
-import com.franciscojavier.escorer.dto.game.GamesResultItem
-import com.franciscojavier.escorer.dto.league.LeaguesResultItem
-import com.franciscojavier.escorer.dto.match.MatchResultItem
-import com.franciscojavier.escorer.model.server.PandaScoreClient
+import com.franciscojavier.escorer.dto.league.LeaguesResult
+import com.franciscojavier.escorer.dto.match.MatchResult
 import com.franciscojavier.escorer.ui.detailmatch.DetailMatchFragment.Companion.EXTRA_MATCH
-import com.franciscojavier.escorer.ui.league.LeagueFragment
-import com.franciscojavier.escorer.ui.league.LeagueViewModel
-import com.franciscojavier.escorer.ui.league.LeagueViewModelFactory
 import kotlinx.coroutines.launch
 
 class MatchFragment : Fragment(R.layout.fragment_match) {
     private val adapter = MatchAdapter(emptyList()){ match -> navigateTo(match)}
 
     private val viewModel : MatchViewModel by viewModels {
-        MatchViewModelFactory(arguments?.getParcelable<LeaguesResultItem>(EXTRA_LEAGUE)!!.slug,
+        MatchViewModelFactory(arguments?.getParcelable<LeaguesResult>(EXTRA_LEAGUE)!!.slug,
             getString(R.string.token))
     }
 
@@ -55,7 +50,7 @@ class MatchFragment : Fragment(R.layout.fragment_match) {
 
     }
 
-    private fun navigateTo(match: MatchResultItem) {
+    private fun navigateTo(match: MatchResult) {
         findNavController().navigate(
             R.id.action_matchFragment_to_detailMatchFragment,
             bundleOf(EXTRA_MATCH to match)

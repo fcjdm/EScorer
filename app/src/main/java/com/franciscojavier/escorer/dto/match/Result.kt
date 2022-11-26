@@ -1,14 +1,16 @@
 package com.franciscojavier.escorer.dto.match
 
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
+@JsonClass(generateAdapter = true)
 @Parcelize
 data class Result(
-    @SerializedName("score")
-    val score: Int,
-    @SerializedName("team_id")
-    val teamId: Int
+    @Json(name = "score")
+    val score: Int?,
+    @Json(name = "team_id")
+    val teamId: Int?
 ) : Parcelable

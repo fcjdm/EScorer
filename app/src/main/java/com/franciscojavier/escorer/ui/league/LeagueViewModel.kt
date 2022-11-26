@@ -3,9 +3,7 @@ package com.franciscojavier.escorer.ui.league
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.franciscojavier.escorer.dto.game.GamesResult
 import com.franciscojavier.escorer.dto.league.LeaguesResult
-import com.franciscojavier.escorer.dto.league.LeaguesResultItem
 import com.franciscojavier.escorer.model.server.PandaScoreClient
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -23,10 +21,10 @@ class LeagueViewModel(slug: String, token: String) : ViewModel() {
             _state.update { it.copy(loading = true) }
             val getAllLeagues = PandaScoreClient.service.getLeagues(slug ,token)
 
-            val leaguesWithMatches = LeaguesResult()
+            val leaguesWithMatches : MutableList<LeaguesResult> = mutableListOf()
             getAllLeagues?.forEach {
-                val matches = PandaScoreClient.service.getUpcomingMatches(it.slug, token)
-                if(matches.size >= 1){
+                val matches = PandaScoreClient.service.getMatches(it.slug, token)
+                if(matches.isNotEmpty()){
                     leaguesWithMatches.add(it)
                 }
             }
@@ -39,7 +37,7 @@ class LeagueViewModel(slug: String, token: String) : ViewModel() {
 
     data class UiState(
         val loading: Boolean = false,
-        val leagues: LeaguesResult = LeaguesResult()
+        val leagues: List<LeaguesResult> = emptyList()
     )
 }
 @Suppress("UNCHECKED_CAST")

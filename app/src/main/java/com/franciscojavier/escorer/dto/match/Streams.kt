@@ -1,20 +1,22 @@
 package com.franciscojavier.escorer.dto.match
 
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
+@JsonClass(generateAdapter = true)
 @Parcelize
 data class Streams(
-    @SerializedName("embed_url")
+    @Json(name = "embed_url")
     val embedUrl: String,
-    @SerializedName("language")
+    @Json(name = "language")
     val language: String,
-    @SerializedName("main")
+    @Json(name = "main")
     val main: Boolean,
-    @SerializedName("official")
+    @Json(name = "official")
     val official: Boolean,
-    @SerializedName("raw_url")
+    @Json(name = "raw_url")
     val rawUrl: String
 ) : Parcelable

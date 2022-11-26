@@ -28,7 +28,7 @@ class MainViewModel(token: String) : ViewModel() {
 
     data class UiState(
         val loading: Boolean = false,
-        val games: GamesResult = GamesResult()
+        val games: List<GamesResult> = emptyList()
     )
 }
 @Suppress("UNCHECKED_CAST")

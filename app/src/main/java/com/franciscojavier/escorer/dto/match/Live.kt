@@ -1,16 +1,18 @@
 package com.franciscojavier.escorer.dto.match
 
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
+@JsonClass(generateAdapter = true)
 @Parcelize
 data class Live(
-    @SerializedName("opens_at")
+    @Json(name = "opens_at")
     val opensAt: String,
-    @SerializedName("supported")
+    @Json(name = "supported")
     val supported: Boolean,
-    @SerializedName("url")
+    @Json(name = "url")
     val url: String
 ) : Parcelable

@@ -19,7 +19,7 @@ class MatchViewModel(slug: String, token: String) : ViewModel() {
     init{
         viewModelScope.launch {
             _state.update { it.copy(loading = true) }
-            val getAllMatches = PandaScoreClient.service.getUpcomingMatches(slug ,token)
+            val getAllMatches = PandaScoreClient.service.getMatches(slug ,token)
 
             _state.update { it.copy(matches = getAllMatches) }
             _state.update { it.copy(loading = false) }
@@ -29,7 +29,7 @@ class MatchViewModel(slug: String, token: String) : ViewModel() {
 
     data class UiState(
         val loading: Boolean = false,
-        val matches: MatchResult = MatchResult()
+        val matches: List<MatchResult> = emptyList()
     )
 }
 @Suppress("UNCHECKED_CAST")

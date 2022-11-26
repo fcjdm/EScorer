@@ -11,8 +11,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.franciscojavier.escorer.R
 import com.franciscojavier.escorer.databinding.FragmentLeagueBinding
-import com.franciscojavier.escorer.dto.league.LeaguesResultItem
-import com.franciscojavier.escorer.dto.game.GamesResultItem
+import com.franciscojavier.escorer.dto.league.LeaguesResult
+import com.franciscojavier.escorer.dto.game.GamesResult
 import com.franciscojavier.escorer.ui.match.MatchFragment.Companion.EXTRA_LEAGUE
 import kotlinx.coroutines.launch
 
@@ -20,7 +20,7 @@ class LeagueFragment : Fragment(R.layout.fragment_league) {
     private val adapter = LeagueAdapter(emptyList()){ league -> navigateTo(league)}
 
     private val viewModel : LeagueViewModel by viewModels {
-        LeagueViewModelFactory(arguments?.getParcelable<GamesResultItem>(EXTRA_GAME)!!.slug,
+        LeagueViewModelFactory(arguments?.getParcelable<GamesResult>(EXTRA_GAME)!!.slug,
         getString(R.string.token))
     }
 
@@ -33,8 +33,6 @@ class LeagueFragment : Fragment(R.layout.fragment_league) {
 
         val binding = FragmentLeagueBinding.bind(view).apply {
             recyclerLeague.adapter = adapter
-
-            val leaguesWithMatches = ArrayList<LeaguesResultItem>()
 
             viewLifecycleOwner.lifecycleScope.launch {
                 viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -51,7 +49,7 @@ class LeagueFragment : Fragment(R.layout.fragment_league) {
         }
     }
 
-    private fun navigateTo(league: LeaguesResultItem) {
+    private fun navigateTo(league: LeaguesResult) {
         findNavController().navigate(
             R.id.action_leagueFragment2_to_matchFragment,
             bundleOf(EXTRA_LEAGUE to league)

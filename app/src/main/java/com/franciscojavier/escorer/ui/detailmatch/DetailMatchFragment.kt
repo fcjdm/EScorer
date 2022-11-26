@@ -10,23 +10,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.franciscojavier.escorer.R
 import com.franciscojavier.escorer.databinding.FragmentDetailMatchBinding
-import com.franciscojavier.escorer.databinding.FragmentLeagueBinding
-import com.franciscojavier.escorer.dto.game.GamesResultItem
-import com.franciscojavier.escorer.dto.league.LeaguesResultItem
-import com.franciscojavier.escorer.dto.match.MatchResultItem
+import com.franciscojavier.escorer.dto.match.MatchResult
 import com.franciscojavier.escorer.loadUrl
-import com.franciscojavier.escorer.model.server.PandaScoreClient
-import com.franciscojavier.escorer.ui.league.LeagueAdapter
-import com.franciscojavier.escorer.ui.league.LeagueFragment
-import com.franciscojavier.escorer.ui.league.LeagueViewModel
-import com.franciscojavier.escorer.ui.league.LeagueViewModelFactory
-import com.franciscojavier.escorer.ui.match.MatchViewModel
-import com.franciscojavier.escorer.ui.match.MatchViewModelFactory
 import kotlinx.coroutines.launch
 
 class DetailMatchFragment : Fragment(R.layout.fragment_detail_match) {
     private val viewModel : DetailMatchViewModel by viewModels {
-        DetailMatchViewModelFactory(arguments?.getParcelable<MatchResultItem>(EXTRA_MATCH)!!)
+        DetailMatchViewModelFactory(arguments?.getParcelable<MatchResult>(EXTRA_MATCH)!!)
     }
 
     companion object{
@@ -42,14 +32,14 @@ class DetailMatchFragment : Fragment(R.layout.fragment_detail_match) {
                     viewModel.state.collect{ state ->
                         if( state.match != null){
                         detailOpponentName1.text = state.match.opponents[0].opponent.name
-                        if(state.match.opponents[0].opponent.imageUrl != null){
+                        if(state.match.opponents[0].opponent.imageUrl != ""){
                             detailOpponentImage1.loadUrl(state.match.opponents[0].opponent.imageUrl)
                         }else{
                             detailOpponentImage1.setImageResource(R.drawable.no_image)
                         }
-                        detailOpponentName2.text = state.match.opponents[0].opponent.name
-                        if(state.match.opponents[1].opponent.imageUrl != null){
-                            detailOpponentImage2.loadUrl(state.match.opponents[0].opponent.imageUrl)
+                        detailOpponentName2.text = state.match.opponents[1].opponent.name
+                        if(state.match.opponents[1].opponent.imageUrl != ""){
+                            detailOpponentImage2.loadUrl(state.match.opponents[1].opponent.imageUrl)
                         }else{
                             detailOpponentImage2.setImageResource(R.drawable.no_image)
                         }

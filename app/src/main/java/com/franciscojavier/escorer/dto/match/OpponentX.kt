@@ -1,24 +1,26 @@
 package com.franciscojavier.escorer.dto.match
 
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
+@JsonClass(generateAdapter = true)
 @Parcelize
 data class OpponentX(
-    @SerializedName("acronym")
-    val acronym: String,
-    @SerializedName("id")
+    @Json(name = "acronym")
+    val acronym: String?,
+    @Json(name = "id")
     val id: Int,
-    @SerializedName("image_url")
+    @Json(name = "image_url")
     val imageUrl: String,
-    @SerializedName("location")
-    val location: String,
-    @SerializedName("modified_at")
+    @Json(name = "location")
+    val location: String?,
+    @Json(name = "modified_at")
     val modifiedAt: String,
-    @SerializedName("name")
+    @Json(name = "name")
     val name: String,
-    @SerializedName("slug")
+    @Json(name = "slug")
     val slug: String
 ) : Parcelable

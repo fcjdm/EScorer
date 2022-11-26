@@ -1,36 +1,38 @@
 package com.franciscojavier.escorer.dto.match
 
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
+@JsonClass(generateAdapter = true)
 @Parcelize
 data class Game(
-    @SerializedName("begin_at")
+    @Json(name = "begin_at")
     val beginAt: String,
-    @SerializedName("complete")
+    @Json(name = "complete")
     val complete: Boolean,
-    @SerializedName("detailed_stats")
+    @Json(name = "detailed_stats")
     val detailedStats: Boolean,
-    @SerializedName("end_at")
+    @Json(name = "end_at")
     val endAt: String,
-    @SerializedName("finished")
+    @Json(name = "finished")
     val finished: Boolean,
-    @SerializedName("forfeit")
+    @Json(name = "forfeit")
     val forfeit: Boolean,
-    @SerializedName("id")
+    @Json(name = "id")
     val id: Int,
-    @SerializedName("length")
+    @Json(name = "length")
     val length: Int,
-    @SerializedName("match_id")
+    @Json(name = "match_id")
     val matchId: Int,
-    @SerializedName("position")
+    @Json(name = "position")
     val position: Int,
-    @SerializedName("status")
+    @Json(name = "status")
     val status: String,
-    @SerializedName("winner")
+    @Json(name = "winner")
     val winner: Winner,
-    @SerializedName("winner_type")
+    @Json(name = "winner_type")
     val winnerType: String
 ) : Parcelable

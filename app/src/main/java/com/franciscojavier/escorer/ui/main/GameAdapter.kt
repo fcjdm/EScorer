@@ -1,23 +1,22 @@
 package com.franciscojavier.escorer.ui.main
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.franciscojavier.escorer.R
 import com.franciscojavier.escorer.databinding.ViewGameBinding
-import com.franciscojavier.escorer.dto.game.GamesResultItem
+import com.franciscojavier.escorer.dto.game.GamesResult
 import com.franciscojavier.escorer.inflate
 
 
 class GameAdapter (
-    var gameList : List<GamesResultItem>,
-    val listener: (GamesResultItem) -> Unit
+    var gameList : List<GamesResult>,
+    val listener: (GamesResult) -> Unit
     ): RecyclerView.Adapter<GameAdapter.ViewHolder>(){
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val binding = ViewGameBinding.bind(view)
-        fun bind(game: GamesResultItem){
+        fun bind(game: GamesResult){
             binding.gameName.text = game.name
         }
     }

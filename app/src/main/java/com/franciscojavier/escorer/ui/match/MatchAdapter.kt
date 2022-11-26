@@ -5,28 +5,28 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.franciscojavier.escorer.R
 import com.franciscojavier.escorer.databinding.ViewMatchBinding
-import com.franciscojavier.escorer.dto.match.MatchResultItem
+import com.franciscojavier.escorer.dto.match.MatchResult
 import com.franciscojavier.escorer.inflate
 import com.franciscojavier.escorer.loadUrl
 
 class MatchAdapter (
-    var matchList : List<MatchResultItem>,
-    val listener: (MatchResultItem) -> Unit
+    var matchList : List<MatchResult>,
+    val listener: (MatchResult) -> Unit
     ): RecyclerView.Adapter<MatchAdapter.ViewHolder>(){
 
         class ViewHolder(view: View): RecyclerView.ViewHolder(view){
             val binding = ViewMatchBinding.bind(view)
-            fun bind(match: MatchResultItem){
+            fun bind(match: MatchResult){
                 binding.matchDate.text = match.beginAt
                 binding.opponent1Name.text = match.opponents[0].opponent.name
-                if(match.opponents[0].opponent.imageUrl != null){
+                if(match.opponents[0].opponent.imageUrl != ""){
                     binding.opponent1Image.loadUrl(match.opponents[0].opponent.imageUrl)
                 }else{
                     binding.opponent1Image.setImageResource(R.drawable.no_image)
                 }
 
                 binding.opponent2Name.text = match.opponents[1].opponent.name
-                if(match.opponents[1].opponent.imageUrl != null){
+                if(match.opponents[1].opponent.imageUrl != ""){
                     binding.opponent2Image.loadUrl(match.opponents[1].opponent.imageUrl)
                 }else{
                     binding.opponent2Image.setImageResource(R.drawable.no_image)

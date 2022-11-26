@@ -10,11 +10,11 @@ import retrofit2.http.Query
 interface PandaScoreService {
 
     @GET("videogames")
-    suspend fun getGames(@Query("token")apiKey: String) : GamesResult
+    suspend fun getGames(@Query("token")apiKey: String) : List<GamesResult>
 
     @GET("videogames/{game-slug}/leagues")
-    suspend fun getLeagues(@Path("game-slug") gameSlug: String, @Query("token")apiKey: String) : LeaguesResult
+    suspend fun getLeagues(@Path("game-slug") gameSlug: String, @Query("token")apiKey: String) : List<LeaguesResult>
 
     @GET("leagues/{league-slug}/matches")
-    suspend fun getUpcomingMatches(@Path("league-slug") leagueSlug: String, @Query("token")apiKey: String) : MatchResult
+    suspend fun getMatches(@Path("league-slug") leagueSlug: String, @Query("token")apiKey: String) : List<MatchResult>
 }

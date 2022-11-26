@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/leagueName"
         android:layout_width="99dp"
-        android:layout_height="61dp"
+        android:layout_height="43dp"
         android:layout_marginTop="28dp"
         android:text="Nombre Liga"
         android:textAlignment="center"
@@ -35,7 +35,7 @@
         android:id="@+id/gameName"
         android:layout_width="82dp"
         android:layout_height="11dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         android:text="Nombre del Juego"
         android:textAlignment="center"
         android:textColor="?attr/colorOnPrimary"
