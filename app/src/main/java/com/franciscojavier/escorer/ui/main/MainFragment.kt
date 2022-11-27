@@ -9,6 +9,8 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import com.franciscojavier.escorer.R
 import com.franciscojavier.escorer.databinding.FragmentMainBinding
 import com.franciscojavier.escorer.dto.game.GamesResult
@@ -20,6 +22,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private val adapter = GameAdapter(emptyList()){ game -> navigateTo(game)}
 
     private val viewModel : MainViewModel by viewModels{MainViewModelFactory(getString(R.string.token))}
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
