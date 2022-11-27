@@ -5,99 +5,129 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorSecondary"
     tools:context=".ui.detailmatch.DetailMatchFragment">
 
-    <ImageView
-        android:id="@+id/detailOpponentImage1"
-        android:layout_width="108dp"
-        android:layout_height="112dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
-        android:src="@drawable/no_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/detailOpponentImage2"
-        android:layout_width="108dp"
-        android:layout_height="112dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="24dp"
-        android:src="@drawable/no_image"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="95dp"
+        android:layout_height="98dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="80dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/detailOpponentImage1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/no_image"
+            android:visibility="visible" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="95dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="6dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/detailOpponentImage2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/no_image"
+            android:visibility="visible" />
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/detailOpponentName1"
-        android:layout_width="141dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
+        android:layout_width="194dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:text="Opponent1Name"
         android:textAlignment="textStart"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailOpponentImage1" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
         android:id="@+id/detailOpponentName2"
-        android:layout_width="141dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="18dp"
-        android:text="TextView"
+        android:layout_width="182dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="12dp"
+        android:text="Opponent2Name"
         android:textAlignment="textEnd"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailOpponentImage2" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <TextView
         android:id="@+id/detailMatchDate"
-        android:layout_width="108dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="24dp"
-        android:text="TextView"
+        android:layout_width="195dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="44dp"
+        android:text="Fecha"
         android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/detailOpponentImage2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/detailOpponentImage1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/detailStatus"
-        android:layout_width="94dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toStartOf="@+id/detailOpponentImage2"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toEndOf="@+id/detailOpponentImage1"
-        app:layout_constraintTop_toBottomOf="@+id/detailMatchDate" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewStatus"
+        android:layout_width="99dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="120dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="6dp"
+        app:layout_constraintEnd_toStartOf="@+id/cardView2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/detailStatus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="TextView"
+            android:textAlignment="center" />
+
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/detailLeagueName"
-        android:layout_width="340dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="112dp"
+        android:layout_width="345dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="268dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailStatus" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/detailGameName"
         android:layout_width="248dp"
         android:layout_height="28dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         android:text="TextView"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailLeagueName" />
 

@@ -1,13 +1,17 @@
 package com.franciscojavier.escorer.ui.match
 
+import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.franciscojavier.escorer.DateConverter
 import com.franciscojavier.escorer.R
 import com.franciscojavier.escorer.databinding.ViewMatchBinding
 import com.franciscojavier.escorer.dto.match.MatchResult
 import com.franciscojavier.escorer.inflate
 import com.franciscojavier.escorer.loadUrl
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MatchAdapter (
     var matchList : List<MatchResult>,
@@ -17,7 +21,16 @@ class MatchAdapter (
         class ViewHolder(view: View): RecyclerView.ViewHolder(view){
             val binding = ViewMatchBinding.bind(view)
             fun bind(match: MatchResult){
-                binding.matchDate.text = match.beginAt
+                if(match.status=="canceled"){
+                    binding.matchDate.text = match.status
+                    binding.matchDate.setTextColor(Color.RED)
+                    binding.matchStatus.visibility = View.GONE
+                }else{
+                    binding.matchDate.text = match.beginAt?.let { DateConverter(it) }
+                }
+
+                binding.matchStatus.text = match.status
+
                 binding.opponent1Name.text = match.opponents[0].opponent.name
                 if(match.opponents[0].opponent.imageUrl != ""){
                     binding.opponent1Image.loadUrl(match.opponents[0].opponent.imageUrl)
@@ -30,6 +43,14 @@ class MatchAdapter (
                     binding.opponent2Image.loadUrl(match.opponents[1].opponent.imageUrl)
                 }else{
                     binding.opponent2Image.setImageResource(R.drawable.no_image)
+                }
+
+              if(match.status==("finished") && match.winnerId == match.opponents[0].opponent.id){
+                    binding.opponent1Name.setTextColor(Color.GREEN)
+                    binding.opponent2Name.setTextColor(Color.RED)
+                }else if (match.status==("finished") && match.winnerId == match.opponents[1].opponent.id){
+                    binding.opponent2Name.setTextColor(Color.GREEN)
+                    binding.opponent1Name.setTextColor(Color.RED)
                 }
 
             }

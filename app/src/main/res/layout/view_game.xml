@@ -17,8 +17,9 @@
 
         <TextView
             android:id="@+id/gameName"
-            android:layout_width="117dp"
-            android:layout_height="71dp"
+            android:layout_width="122dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="20dp"
             android:text="Nombre del Juego"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"

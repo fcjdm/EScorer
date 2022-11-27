@@ -16,9 +16,9 @@
 
         <TextView
             android:id="@+id/matchDate"
-            android:layout_width="179dp"
-            android:layout_height="22dp"
-            android:layout_marginTop="28dp"
+            android:layout_width="188dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="16dp"
             android:text="Fecha"
             android:textAlignment="center"
             android:textColor="?attr/colorOnPrimary"
@@ -69,6 +69,17 @@
             android:textColor="?attr/colorOnPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/opponent2Image" />
+
+        <TextView
+            android:id="@+id/matchStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="STATUS"
+            app:layout_constraintEnd_toStartOf="@+id/opponent2Image"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toEndOf="@+id/opponent1Image"
+            app:layout_constraintTop_toBottomOf="@+id/matchDate" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
