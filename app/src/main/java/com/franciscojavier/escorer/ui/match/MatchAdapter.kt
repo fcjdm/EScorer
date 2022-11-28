@@ -7,20 +7,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.franciscojavier.escorer.DateConverter
 import com.franciscojavier.escorer.R
 import com.franciscojavier.escorer.databinding.ViewMatchBinding
-import com.franciscojavier.escorer.dto.match.MatchResult
+import com.franciscojavier.escorer.dto.match.GameMatchResult
 import com.franciscojavier.escorer.inflate
 import com.franciscojavier.escorer.loadUrl
-import java.text.SimpleDateFormat
-import java.util.*
 
 class MatchAdapter (
-    var matchList : List<MatchResult>,
-    val listener: (MatchResult) -> Unit
+    var matchList : List<GameMatchResult>,
+    val listener: (GameMatchResult) -> Unit
     ): RecyclerView.Adapter<MatchAdapter.ViewHolder>(){
 
         class ViewHolder(view: View): RecyclerView.ViewHolder(view){
             val binding = ViewMatchBinding.bind(view)
-            fun bind(match: MatchResult){
+            fun bind(match: GameMatchResult){
                 if(match.status=="canceled"){
                     binding.matchDate.text = match.status
                     binding.matchDate.setTextColor(Color.RED)
@@ -30,20 +28,39 @@ class MatchAdapter (
                 }
 
                 binding.matchStatus.text = match.status
+                if(match.opponents.isNotEmpty()) {
+                    if (match.opponents[0].opponent.name != "") {
+                        binding.opponent1Name.text = match.opponents[0].opponent.name
+                    } else {
+                        binding.opponent1Name.text = "no_name"
+                    }
+                    if (match.opponents[1].opponent.name != "") {
+                        binding.opponent2Name.text = match.opponents[1].opponent.name
+                    } else {
+                        binding.opponent2Name.text = "no_name"
+                    }
+                }else{
+                    binding.opponent1Name.text = "no_name"
+                    binding.opponent2Name.text = "no_name"
+                }
 
-                binding.opponent1Name.text = match.opponents[0].opponent.name
-                if(match.opponents[0].opponent.imageUrl != ""){
-                    binding.opponent1Image.loadUrl(match.opponents[0].opponent.imageUrl)
+                if(match.opponents.isNotEmpty()) {
+                    if (match.opponents[0].opponent.imageUrl != "") {
+                        binding.opponent1Image.loadUrl(match.opponents[0].opponent.imageUrl)
+                    } else {
+                        binding.opponent1Image.setImageResource(R.drawable.no_image)
+                    }
+                    if (match.opponents[1].opponent.imageUrl != "") {
+                        binding.opponent2Image.loadUrl(match.opponents[1].opponent.imageUrl)
+                    } else {
+                        binding.opponent2Image.setImageResource(R.drawable.no_image)
+                    }
                 }else{
                     binding.opponent1Image.setImageResource(R.drawable.no_image)
-                }
-
-                binding.opponent2Name.text = match.opponents[1].opponent.name
-                if(match.opponents[1].opponent.imageUrl != ""){
-                    binding.opponent2Image.loadUrl(match.opponents[1].opponent.imageUrl)
-                }else{
                     binding.opponent2Image.setImageResource(R.drawable.no_image)
                 }
+
+
 
               if(match.status==("finished") && match.winnerId == match.opponents[0].opponent.id){
                     binding.opponent1Name.setTextColor(Color.GREEN)

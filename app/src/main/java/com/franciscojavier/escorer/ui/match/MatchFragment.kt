@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.franciscojavier.escorer.R
 import com.franciscojavier.escorer.databinding.FragmentMatchBinding
 import com.franciscojavier.escorer.dto.league.LeaguesResult
-import com.franciscojavier.escorer.dto.match.MatchResult
+import com.franciscojavier.escorer.dto.match.GameMatchResult
 import com.franciscojavier.escorer.ui.detailmatch.DetailMatchFragment.Companion.EXTRA_MATCH
 import kotlinx.coroutines.launch
 
@@ -50,7 +50,7 @@ class MatchFragment : Fragment(R.layout.fragment_match) {
 
     }
 
-    private fun navigateTo(match: MatchResult) {
+    private fun navigateTo(match: GameMatchResult) {
         findNavController().navigate(
             R.id.action_matchFragment_to_detailMatchFragment,
             bundleOf(EXTRA_MATCH to match)

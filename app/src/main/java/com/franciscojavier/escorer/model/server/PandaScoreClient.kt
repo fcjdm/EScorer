@@ -1,6 +1,6 @@
 package com.franciscojavier.escorer.model.server
 
-import com.franciscojavier.escorer.BuildConfig
+import androidx.viewbinding.BuildConfig
 import com.franciscojavier.escorer.NULL_TO_EMPTY_STRING_ADAPTER
 import com.franciscojavier.escorer.NULL_TO_ZERO_ADAPTER
 import com.squareup.moshi.Moshi

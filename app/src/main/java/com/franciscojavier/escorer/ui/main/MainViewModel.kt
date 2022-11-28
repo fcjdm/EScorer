@@ -26,9 +26,18 @@ class MainViewModel(token: String) : ViewModel() {
         }
     }
 
+    fun navigateTo(game: GamesResult) {
+        _state.update { it.copy(navigateTo = game) }
+    }
+
+    fun onNavigateDone(){
+        _state.update { it.copy(navigateTo = null) }
+    }
+
     data class UiState(
         val loading: Boolean = false,
-        val games: List<GamesResult> = emptyList()
+        val games: List<GamesResult> = emptyList(),
+        val navigateTo: GamesResult? = null
     )
 }
 @Suppress("UNCHECKED_CAST")

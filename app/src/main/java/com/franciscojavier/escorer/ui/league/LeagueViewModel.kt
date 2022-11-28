@@ -20,8 +20,8 @@ class LeagueViewModel(slug: String, token: String) : ViewModel() {
         viewModelScope.launch {
             _state.update { it.copy(loading = true) }
             val getAllLeagues = PandaScoreClient.service.getLeagues(slug ,token)
-
             val leaguesWithMatches : MutableList<LeaguesResult> = mutableListOf()
+
             getAllLeagues?.forEach {
                 val matches = PandaScoreClient.service.getMatches(it.slug, token)
                 if(matches.isNotEmpty()){

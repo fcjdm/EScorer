@@ -3,7 +3,7 @@ package com.franciscojavier.escorer.ui.match
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.franciscojavier.escorer.dto.match.MatchResult
+import com.franciscojavier.escorer.dto.match.GameMatchResult
 import com.franciscojavier.escorer.model.server.PandaScoreClient
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -27,9 +27,10 @@ class MatchViewModel(slug: String, token: String) : ViewModel() {
         }
     }
 
+
     data class UiState(
         val loading: Boolean = false,
-        val matches: List<MatchResult> = emptyList()
+        val matches: List<GameMatchResult> = emptyList()
     )
 }
 @Suppress("UNCHECKED_CAST")

@@ -11,7 +11,11 @@
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_leagueFragment2"
-            app:destination="@id/leagueFragment2" />
+            app:destination="@id/leagueFragment2"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/leagueFragment2"
@@ -20,7 +24,11 @@
         tools:layout="@layout/fragment_league" >
         <action
             android:id="@+id/action_leagueFragment2_to_matchFragment"
-            app:destination="@id/matchFragment" />
+            app:destination="@id/matchFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/matchFragment"
@@ -28,7 +36,11 @@
         android:label="MatchFragment" >
         <action
             android:id="@+id/action_matchFragment_to_detailMatchFragment"
-            app:destination="@id/detailMatchFragment" />
+            app:destination="@id/detailMatchFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/detailMatchFragment"

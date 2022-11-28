@@ -15,6 +15,7 @@ import com.franciscojavier.escorer.R
 import com.franciscojavier.escorer.databinding.FragmentMainBinding
 import com.franciscojavier.escorer.dto.game.GamesResult
 import com.franciscojavier.escorer.ui.league.LeagueFragment
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
@@ -39,8 +40,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                         adapter.notifyDataSetChanged()
                     }
                 }
-
             }
+
 
 
         }

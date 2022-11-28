@@ -11,7 +11,7 @@ import kotlinx.parcelize.RawValue
 
 @JsonClass(generateAdapter = true)
 @Parcelize
-data class MatchResult(
+data class GameMatchResult(
     @Json(name = "begin_at")
     val beginAt: String? = null,
     @Json(name = "detailed_stats")

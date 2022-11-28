@@ -11,14 +11,13 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.franciscojavier.escorer.DateConverter
 import com.franciscojavier.escorer.R
 import com.franciscojavier.escorer.databinding.FragmentDetailMatchBinding
-import com.franciscojavier.escorer.dto.match.MatchResult
+import com.franciscojavier.escorer.dto.match.GameMatchResult
 import com.franciscojavier.escorer.loadUrl
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
 
 class DetailMatchFragment : Fragment(R.layout.fragment_detail_match) {
     private val viewModel : DetailMatchViewModel by viewModels {
-        DetailMatchViewModelFactory(arguments?.getParcelable<MatchResult>(EXTRA_MATCH)!!)
+        DetailMatchViewModelFactory(arguments?.getParcelable<GameMatchResult>(EXTRA_MATCH)!!)
     }
 
     companion object{
