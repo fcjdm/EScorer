@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 
 
 class MainFragment : Fragment(R.layout.fragment_main) {
-    private val adapter = GameAdapter(emptyList()){ game -> navigateTo(game)}
+    private val adapter = GameAdapter(emptyList()){ game -> viewModel.navigateTo(game)}
 
     private val viewModel : MainViewModel by viewModels{MainViewModelFactory(getString(R.string.token))}
 
@@ -31,22 +31,22 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         val binding = FragmentMainBinding.bind(view).apply {
             recyclerGame.adapter = adapter
 
-            viewLifecycleOwner.lifecycleScope.launch{
-                viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
 
-                    viewModel.state.collect{ state ->
-                        progress.visibility = if(state.loading) View.VISIBLE else View.GONE
-                        adapter.gameList = state.games
-                        adapter.notifyDataSetChanged()
-                    }
+            viewModel.state.observe(viewLifecycleOwner){ state ->
+                progress.visibility = if(state.loading) View.VISIBLE else View.GONE
+                adapter.gameList = state.games
+                adapter.notifyDataSetChanged()
+
+                state.navigateTo?.let {
+                    findNavController().navigate(
+                        R.id.action_mainFragment_to_leagueFragment2,
+                        bundleOf(LeagueFragment.EXTRA_GAME to it)
+                    )
+                    viewModel.onNavigateDone()
                 }
             }
 
-
-
         }
-
-
     }
 
     private fun navigateTo(game: GamesResult) {

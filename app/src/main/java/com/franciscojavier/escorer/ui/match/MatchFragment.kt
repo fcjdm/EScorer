@@ -13,11 +13,13 @@ import com.franciscojavier.escorer.R
 import com.franciscojavier.escorer.databinding.FragmentMatchBinding
 import com.franciscojavier.escorer.dto.league.LeaguesResult
 import com.franciscojavier.escorer.dto.match.GameMatchResult
+import com.franciscojavier.escorer.ui.detailmatch.DetailMatchFragment
 import com.franciscojavier.escorer.ui.detailmatch.DetailMatchFragment.Companion.EXTRA_MATCH
+import com.franciscojavier.escorer.ui.league.LeagueFragment
 import kotlinx.coroutines.launch
 
 class MatchFragment : Fragment(R.layout.fragment_match) {
-    private val adapter = MatchAdapter(emptyList()){ match -> navigateTo(match)}
+    private val adapter = MatchAdapter(emptyList()){ match -> viewModel.navigateTo(match)}
 
     private val viewModel : MatchViewModel by viewModels {
         MatchViewModelFactory(arguments?.getParcelable<LeaguesResult>(EXTRA_LEAGUE)!!.slug,
@@ -34,29 +36,25 @@ class MatchFragment : Fragment(R.layout.fragment_match) {
         val binding = FragmentMatchBinding.bind(view).apply {
             recyclerMatch.adapter = adapter
 
-            viewLifecycleOwner.lifecycleScope.launch {
-                viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
 
-                    viewModel.state.collect { state ->
-                        progress.visibility = if (state.loading) View.VISIBLE else View.GONE
-                        adapter.matchList = state.matches
-                        adapter.notifyDataSetChanged()
-                    }
+            viewModel.state.observe(viewLifecycleOwner){ state ->
+                progress.visibility = if (state.loading) View.VISIBLE else View.GONE
+                adapter.matchList = state.matches
+                adapter.notifyDataSetChanged()
+
+                state.navigateTo?.let {
+                    findNavController().navigate(
+                        R.id.action_matchFragment_to_detailMatchFragment,
+                        bundleOf(DetailMatchFragment.EXTRA_MATCH to it)
+                    )
+                    viewModel.onNavigateDone()
                 }
-
             }
-        }
+}
 
 
     }
 
-    private fun navigateTo(match: GameMatchResult) {
-        findNavController().navigate(
-            R.id.action_matchFragment_to_detailMatchFragment,
-            bundleOf(EXTRA_MATCH to match)
-        )
-
-    }
 
 
 }

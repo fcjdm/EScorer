@@ -1,37 +1,32 @@
 package com.franciscojavier.escorer.ui.main
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.franciscojavier.escorer.dto.game.GamesResult
 import com.franciscojavier.escorer.model.server.PandaScoreClient
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel(token: String) : ViewModel() {
-    private val _state = MutableStateFlow(UiState())
-    val state: StateFlow<UiState> = _state.asStateFlow()
+    private val _state = MutableLiveData(UiState())
+    val state: LiveData<UiState> get() = _state
 
 
-    init{
-        viewModelScope.launch {
-            _state.update { it.copy(loading = true) }
+    init {
+        viewModelScope.launch(Dispatchers.Main){
+            _state.value = _state.value?.copy(loading = true)
             val getAllGames = PandaScoreClient.service.getGames(token)
-            _state.update { it.copy(games = getAllGames) }
-            _state.update { it.copy(loading = false) }
+            _state.value = _state.value?.copy(games = getAllGames)
+            _state.value = _state.value?.copy(loading = false)
 
         }
     }
 
     fun navigateTo(game: GamesResult) {
-        _state.update { it.copy(navigateTo = game) }
+        _state.value = _state.value?.copy(navigateTo = game)
     }
 
     fun onNavigateDone(){
-        _state.update { it.copy(navigateTo = null) }
+        _state.value = _state.value?.copy(navigateTo = null)
     }
 
     data class UiState(

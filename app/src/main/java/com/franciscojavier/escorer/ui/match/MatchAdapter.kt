@@ -25,9 +25,10 @@ class MatchAdapter (
                     binding.matchStatus.visibility = View.GONE
                 }else{
                     binding.matchDate.text = match.beginAt?.let { DateConverter(it) }
+                    binding.matchStatus.text = match.status
                 }
 
-                binding.matchStatus.text = match.status
+
                 if(match.opponents.isNotEmpty()) {
                     if (match.opponents[0].opponent.name != "") {
                         binding.opponent1Name.text = match.opponents[0].opponent.name
@@ -39,12 +40,7 @@ class MatchAdapter (
                     } else {
                         binding.opponent2Name.text = "no_name"
                     }
-                }else{
-                    binding.opponent1Name.text = "no_name"
-                    binding.opponent2Name.text = "no_name"
-                }
 
-                if(match.opponents.isNotEmpty()) {
                     if (match.opponents[0].opponent.imageUrl != "") {
                         binding.opponent1Image.loadUrl(match.opponents[0].opponent.imageUrl)
                     } else {
@@ -56,11 +52,11 @@ class MatchAdapter (
                         binding.opponent2Image.setImageResource(R.drawable.no_image)
                     }
                 }else{
+                    binding.opponent1Name.text = "no_name"
+                    binding.opponent2Name.text = "no_name"
                     binding.opponent1Image.setImageResource(R.drawable.no_image)
                     binding.opponent2Image.setImageResource(R.drawable.no_image)
                 }
-
-
 
               if(match.status==("finished") && match.winnerId == match.opponents[0].opponent.id){
                     binding.opponent1Name.setTextColor(Color.GREEN)

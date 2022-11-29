@@ -34,19 +34,22 @@ class LeagueFragment : Fragment(R.layout.fragment_league) {
         val binding = FragmentLeagueBinding.bind(view).apply {
             recyclerLeague.adapter = adapter
 
-            viewLifecycleOwner.lifecycleScope.launch {
-                viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
 
-                    viewModel.state.collect { state ->
-                        progress.visibility = if (state.loading) View.VISIBLE else View.GONE
-                        adapter.leagueList = state.leagues
-                        adapter.notifyDataSetChanged()
-                    }
+            viewModel.state.observe(viewLifecycleOwner){ state ->
+                progress.visibility = if (state.loading) View.VISIBLE else View.GONE
+                adapter.leagueList = state.leagues
+                adapter.notifyDataSetChanged()
+
+                state.navigateTo?.let {
+                    findNavController().navigate(
+                        R.id.action_mainFragment_to_leagueFragment2,
+                        bundleOf(LeagueFragment.EXTRA_GAME to it)
+                    )
+                    viewModel.onNavigateDone()
                 }
-
             }
-
         }
+
     }
 
     private fun navigateTo(league: LeaguesResult) {
