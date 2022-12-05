@@ -10,17 +10,16 @@
     android:paddingBottom="5dp"
     app:defaultNavHost="true"
     app:navGraph="@navigation/nav_graph"
-    tools:context=".ui.main.MainFragment">
+    tools:context=".ui.match.MatchFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerGame"
+        android:id="@+id/recyclerMatch"
         android:layout_marginTop="100dp"
         android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
-        tools:listitem="@layout/view_game" />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/view_match" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progress"
@@ -37,15 +36,13 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="122dp"
-            android:layout_height="48dp"
+            android:layout_width="185dp"
+            android:layout_height="46dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="28dp"
-            android:text="Juegos"
+            android:text="Partidos"
             android:textSize="34sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </FrameLayout>

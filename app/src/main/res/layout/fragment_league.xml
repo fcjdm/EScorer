@@ -10,17 +10,17 @@
     android:paddingBottom="5dp"
     app:defaultNavHost="true"
     app:navGraph="@navigation/nav_graph"
-    tools:context=".ui.main.MainFragment">
+    tools:context=".ui.league.LeagueFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerGame"
+        android:id="@+id/recyclerLeague"
         android:layout_marginTop="100dp"
         android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="3"
-        tools:listitem="@layout/view_game" />
+        app:spanCount="4"
+        tools:listitem="@layout/view_league" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/progress"
@@ -41,11 +41,11 @@
             android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="28dp"
-            android:text="Juegos"
+            android:text="Ligas"
             android:textSize="34sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>
